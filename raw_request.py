@@ -34,9 +34,8 @@ def build_request(host: str, port: int, path: str = "/") -> bytes:
     提示：用列表 + "\r\n".join(lines) 再手动加结尾的 "\r\n\r\n"。
     """
     request_line = f"GET {path} HTTP/1.1"
-    request_head = (f"Host: {host}:{port}\r\n"
-                    f"Connection: close\r\n")
-    return (request_line+"\r\n"+request_head+"\r\n").encode("utf-8")
+    request_head = f"Host: {host}:{port}\r\nConnection: close\r\n"
+    return (request_line + "\r\n" + request_head + "\r\n").encode("utf-8")
 
 
 def fetch(host: str, port: int, path: str = "/") -> bytes:
