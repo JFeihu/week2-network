@@ -101,7 +101,7 @@ async def fetch_with_retry(url: str, times: int = 3) -> str:
         for _ in range(times):
             try:
                 resp = await client.get(url)
-                resp.raise_for_status()    # 连接失败会自己抛出错误，不用在raise
+                resp.raise_for_status()  # 连接失败会自己抛出错误，不用在raise
                 return resp.text
             except Exception as exc:
                 last_error = exc
